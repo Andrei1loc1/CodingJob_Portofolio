@@ -42,6 +42,21 @@ html{
       cursor: pointer;
       transition: .4s;
 }
+.repo-btn{
+    display: inline-block;
+    background: var(--color-white);
+    color: var(--first-color);
+    border: 3px solid var(--first-color);
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .3s;
+}
+.repo-btn:hover{
+    background: var(--first-color);
+    color: var(--color-white);
+}
 .btn>i{
     margin-left:10px;
 
@@ -507,8 +522,32 @@ h3{
   pointer-events: auto;
   padding: 24px;
 }
+.project-links{
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.large-btn{
+    padding: 12px 20px;
+    font-size: 16px;
+}
+.modal-cta{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin-top:18px;
+}
+.modal-content-pane {
+    text-align: center;
+}
 .project-toggle-btn i {
   transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
 }
 
 .project-toggle-btn i.rotated {
@@ -821,7 +860,7 @@ footer{
 }
 .modal-body{
     display: grid;
-    grid-template-columns: 3fr 2fr; /* imaginea mai lată */
+    grid-template-columns: 4fr 2fr; /* imaginea mai lată */
     gap: 0;
     min-height: 400px;
 }

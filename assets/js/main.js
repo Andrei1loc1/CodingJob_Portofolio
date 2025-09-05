@@ -200,21 +200,33 @@ document.querySelectorAll('.project-box').forEach((box) => {
     const details = btn.nextElementSibling; // existing content
     const title = box.querySelector('h3')?.textContent?.trim() || 'Project';
     const image = box.getAttribute('data-image') || 'assets/images/avatar.png';
-    // Build modal content: keep text, remove original inline <a>, then add centered CTA button
-    let href = '';
-    let linkText = 'Vezi proiectul';
-    const linkEl = details.querySelector('a');
-    if (linkEl) {
-      href = linkEl.getAttribute('href') || '';
-      linkText = (linkEl.textContent || '').trim() || linkText;
-    }
-    const descriptionHtml = Array.from(details.children)
+
+    // Find primary project link inside details (if any)
+    const projectLinkEl = details ? details.querySelector('a') : null;
+    const projectHref = projectLinkEl ? projectLinkEl.getAttribute('href') || '' : '';
+    const projectLinkText = projectLinkEl ? (projectLinkEl.textContent || '').trim() || 'Vezi proiectul' : '';
+
+    // Find repository link in the project box (may be in .project-links or have class .repo-btn)
+    const repoLinkEl = box.querySelector('.repo-btn') || box.querySelector('.project-links a');
+    const repoHref = repoLinkEl ? repoLinkEl.getAttribute('href') || '' : '';
+
+    // Build description HTML (exclude inline <a> tags from details)
+    const descriptionHtml = details ? Array.from(details.children)
       .filter(el => el.tagName.toLowerCase() !== 'a')
       .map(el => el.outerHTML)
-      .join('');
-    const ctaHtml = href
-      ? `<div class="modal-cta"><a class="btn purple-btn large-btn" href="${href}" target="_blank" rel="noopener">${linkText}</a></div>`
-      : '';
+      .join('') : '';
+
+    // Build CTA HTML: include project button and repository button (if present)
+    let ctaHtml = '';
+    if(projectHref){
+      ctaHtml += `<div class="modal-cta"><a class="btn purple-btn large-btn" href="${projectHref}" target="_blank" rel="noopener">${projectLinkText}</a>`;
+    }
+    if(repoHref){
+      // place repo button next to project button
+      ctaHtml += ` <a class="repo-btn large-btn" href="${repoHref}" target="_blank" rel="noopener">Repository</a>`;
+    }
+    if(projectHref){ ctaHtml += `</div>`; }
+
     openProjectModal(descriptionHtml + ctaHtml, image, title);
   });
 });
