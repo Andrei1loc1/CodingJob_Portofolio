@@ -117,7 +117,7 @@ nav{
     content: '';
     position: absolute;
     left: 50%;
-    bottom: -15px;
+    bottom: -5px; /* Schimbat de la -15px la -5px */
     transform: translate(-50%, -50%);
     width: 5px;
     height: 5px;

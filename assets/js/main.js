@@ -1,12 +1,25 @@
 
 function myMenuFunction(){
-  var menuBtn = document.getElementById("myNavMenu");
-  if(menuBtn.className === "nav-menu"){
-      menuBtn.className += " responsive";
-  } else {
-      menuBtn.className = "nav-menu";
-  }
+    var menuBtn = document.getElementById("myNavMenu");
+    if(menuBtn.className === "nav-menu"){
+        menuBtn.className += " responsive";
+    } else {
+        menuBtn.className = "nav-menu";
+    }
 }
+
+// Închide meniul când se face click pe un link
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const menuBtn = document.getElementById("myNavMenu");
+            if(menuBtn.className.includes("responsive")) {
+                menuBtn.className = "nav-menu";
+            }
+        });
+    });
+});
 
 window.onscroll = function() {headerShadow()};
 
