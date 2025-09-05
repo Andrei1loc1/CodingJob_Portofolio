@@ -1,0 +1,24 @@
+/* Fix pentru scroll orizontal */
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.container {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Asigură-te că nav menu-ul pe mobile nu depășește width-ul ecranului */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+    
+    nav {
+        padding-inline: 5vw; /* Reduce padding-ul pe mobile */
+    }
+}
