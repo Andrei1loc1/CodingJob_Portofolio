@@ -55,7 +55,9 @@ html{
 }
 .repo-btn:hover{
     background: var(--first-color);
-    color: var(--color-white);
+    color: #fff !important;
+    text-shadow: none;
+    opacity: 1;
 }
 .btn>i{
     margin-left:10px;
@@ -528,9 +530,14 @@ h3{
     gap: 12px;
     align-items: center;
 }
-.large-btn{
-    padding: 12px 20px;
+.large-btn {
+    padding: 12px 26px;
     font-size: 16px;
+    border-radius: 30px;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .modal-cta{
     display:flex;
