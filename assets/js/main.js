@@ -38,7 +38,7 @@ function headerShadow(){
 
 function downloadCV(){
   const link = document.createElement("a");
-  link.href = "assets/js/CV.pdf";
+  link.href = "assets/js/cv_engleza.pdf";
   link.download = "CV.pdf";
   link.click();
 }
